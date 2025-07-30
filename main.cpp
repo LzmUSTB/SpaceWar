@@ -11,9 +11,9 @@
 
 int main()
 {
-	//使窗口大小不受系统影响
 	SetProcessDpiAwareness(PROCESS_PER_MONITOR_DPI_AWARE);
-	//初始化
+	
+	// init
 	int score = 0;
 	int width = 550;
 	int height = 950;
@@ -22,7 +22,8 @@ int main()
 	settextcolor(0xb3001d);
 	setbkmode(TRANSPARENT);
 	state stateSystem;
-	//游戏循环
+
+	// main loop
 	while(1)
 	{
 		stateSystem.selectMenu();

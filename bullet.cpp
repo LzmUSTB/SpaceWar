@@ -60,7 +60,7 @@ public:
 			m_x = x + width / 2 - m_width / 2;
 		}
 		m_speed = speed;
-		m_angle = angle;//发射角度，以竖直向下为0弧度，向右为正
+		m_angle = angle;	//发射角度，以竖直向下为0弧度，向右为正
 	}
 
 	void drawBullet()

@@ -109,6 +109,8 @@ public:
 		int timeCount = 66;
 		srand((unsigned int)time(NULL));
 		BeginBatchDraw();
+
+		// main loop
 		while (1)
 		{
 			if (ifFailed) 
@@ -121,7 +123,7 @@ public:
 				return; 
 			}
 			if (timeCount-- == 0) { score++; timeCount = 66; }
-			//打印背景，生成并打印敌人，敌人子弹，道具
+			
 			cleardevice();
 			scroll();
 			introduction();
@@ -132,15 +134,16 @@ public:
 			ItemSystem.drawItemBlock();
 			ItemSystem.isItemHit(&p1,p1.itemType);
 			enemySystem.drawEnemies();
-			//判断敌人碰撞
+			// enemy collision
 			for (int i = 0; i <50; i++)
 			{
 				if (p1.m_blt[i] != 0)
 					score += enemySystem.isEnemiesHit(p1.m_blt[i], &destroySystem);
 			}
-			//打印玩家，玩家子弹
+
 			p1.drawPlayerAndBullet();
-			//判断玩家是否碰撞
+			
+			// player collision
 			for (int i = 0; i < 30; i++)
 			{
 				if (p1.shieldOn) { break; }
@@ -163,10 +166,11 @@ public:
 					}
 				}
 			}
-			//打印分数，爆炸效果
+
 			printScore();
 			destroySystem.drawEffects();
-			//接收指令
+			
+			// input
 			if (_kbhit())
 			{
 				char cmd = _getch();
@@ -177,7 +181,8 @@ public:
 				}
 			}
 			FlushBatchDraw();
-			//控制帧率
+			
+			// frame limit
 			Sleep(50);
 		}
 	}
